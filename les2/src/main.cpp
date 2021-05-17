@@ -90,7 +90,7 @@ int main() {
    car3.engine = 1;
 
    printf("%s has %d wheels %d doors %d engines\n", car2.model, car2.wheels, car2.doors, car2.engine);
-   printf("Size of car is %l\n", sizeof(Car));
+   printf("Size of car is %ld\n", sizeof(Car));
 
    Measure stone1;
    stone1.weight = 3.4f;
@@ -99,7 +99,7 @@ int main() {
    Measure stone3;
    stone3.volume = 0.001;
 
-   printf("Stone weight is %1.2f\n", stone1.weight);
+   printf("Stone weight is %1.2fkg\n", stone1.weight);
 
    Holder h;
    h.val.i = 10;
