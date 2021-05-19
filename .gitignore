@@ -33,3 +33,9 @@
 
 # Build files
 les2/build
+les2/bin
+les3/build
+les3/bin
+
+# zip archives
+*.zip

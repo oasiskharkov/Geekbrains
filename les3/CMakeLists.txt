@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-project(les2)
+project(les3)
 
 file(GLOB SOURCES src/*.cpp)
 
