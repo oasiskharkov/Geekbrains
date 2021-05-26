@@ -38,6 +38,8 @@ les3/build
 les3/bin
 les4/build
 les4/bin
+les5/build
+les5/bin
 
 # zip archives
 *.zip

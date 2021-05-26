@@ -1,3 +1,0 @@
-/home/aklopkov/Develop/Study/gb/Geekbrains/les5/build/CMakeFiles/rebuild_cache.dir
-/home/aklopkov/Develop/Study/gb/Geekbrains/les5/build/CMakeFiles/edit_cache.dir
-/home/aklopkov/Develop/Study/gb/Geekbrains/les5/build/CMakeFiles/les5.dir

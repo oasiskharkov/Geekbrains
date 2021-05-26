@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/les5.dir/src/main.cpp.o  -o ../bin/les5 
