@@ -31,7 +31,7 @@ int main()
    int val;
    std::cout << "Input value: ";
    std::cin >> val;
-   std::cout << (val > 21 ? (val - 21 ) << 1 : val - 21) << std::endl;
+   std::cout << (val > 21 ? (val - 21 ) << 1 : 21 - val) << std::endl; // разница
 
    int arr[3][3][3] = {};
    arr[1][1][1] = 35;
