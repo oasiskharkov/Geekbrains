@@ -6,7 +6,6 @@
 #include <iterator>
 
 bool test(int val, bool is_prime);
-//bool test();
 
 static constexpr int TEST_NUM = 10000;
 static constexpr size_t MSIZE = 5;
@@ -55,19 +54,19 @@ int main()
     // ---------#3---------
     const int a1 = 10;
     const int b1 = 10;
-    std::cout << std::boolalpha << ((a1 == 10 && b1 == 10) || (a1 + b1 == 10)) << std::endl;
+    std::cout << std::boolalpha << ((a1 == 10 || b1 == 10) || (a1 + b1 == 10)) << std::endl;
 
     const int a2 = 4;
     const int b2 = 6;
-    std::cout << std::boolalpha << ((a2 == 10 && b2 == 10) || (a2 + b2 == 10)) << std::endl;
+    std::cout << std::boolalpha << ((a2 == 10 || b2 == 10) || (a2 + b2 == 10)) << std::endl;
 
     const int a3 = 3;
     const int b3 = 5;
-    std::cout << std::boolalpha << ((a3 == 10 && b3 == 10) || (a3 + b3 == 10)) << std::endl;
+    std::cout << std::boolalpha << ((a3 == 10 || b3 == 10) || (a3 + b3 == 10)) << std::endl;
 
     // ---------#4---------
     int arr[MSIZE][MSIZE] = {};
-    for(size_t i = 0; i < MSIZE; ++i)
+    /*for(size_t i = 0; i < MSIZE; ++i)
     {
         for(size_t j = 0; j < MSIZE; ++j)
         {
@@ -76,8 +75,20 @@ int main()
             std::cout << arr[i][j] << ' ';
         }
         std::cout << std::endl;
+    }*/
+
+    for(size_t k = 0; k < MSIZE; ++k)
+    {
+        arr[k][k] = 1;
+        arr[k][MSIZE - k - 1] = 1;
     }
 
+    for(size_t k = 0; k < MSIZE; ++k)
+    {
+        for(size_t p = 0; p < MSIZE; ++p)
+            std::cout << arr[k][p] << ' ';
+        std::cout << std::endl;
+    }
 
     // ---------#5---------
     for(size_t i = 0; i < TEST_NUM; ++i)
