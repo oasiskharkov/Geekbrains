@@ -40,6 +40,11 @@ les4/build
 les4/bin
 les5/build
 les5/bin
+les6/build
+les6/bin
 
-# zip archives
+# Zip archives
 *.zip
+
+# User files
+*.user

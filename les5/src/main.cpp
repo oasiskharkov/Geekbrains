@@ -54,7 +54,7 @@ int main()
    print_array(arr4, SIZE4);
    shift(arr4, SIZE4, 10);
    print_array(arr4, SIZE4);
-   shift(arr4, SIZE4, -13);
+   shift(arr4, SIZE4, -10);
    print_array(arr4, SIZE4);
    shift(arr4, SIZE4, 0);
    print_array(arr4, SIZE4);
@@ -98,22 +98,26 @@ void inverse(int* arr, const size_t size)
 
 void add_three(int arr[], const size_t size)
 {
-    size_t i = 0, j = 1;
-    for(; i < size; ++i, j+=3)
+    size_t i = 0;
+    arr[0] = 1;
+    for(i = 1; i < size; ++i)
     {
-        arr[i] = j;
+        arr[i] = arr[i - 1] + 3;
     }
 }
 
 std::pair<int, bool> check_balance(int arr[], const size_t size)
 {
+    int sum = std::accumulate(&arr[0], &arr[size], 0);
+    int sum_left = arr[0];
+    int sum_right = sum - sum_left;
     for(size_t i = 1; i < size; ++i)
     {
-        int sum_left = std::accumulate(&arr[0], &arr[i], 0);
-        int sum_right = std::accumulate(&arr[i], &arr[size], 0);
         std::cout << sum_left << " " << sum_right << std::endl;
         if (sum_left == sum_right)
             return std::make_pair(i, true);
+        sum_left += arr[i];
+        sum_right -= arr[i];
     }
     return std::make_pair(-1, false);
 }
@@ -121,26 +125,16 @@ std::pair<int, bool> check_balance(int arr[], const size_t size)
 void shift(int arr[], const size_t size, const int n)
 {
     int shift = abs(n) % size;
+    shift = n >= 0 ? shift : size - shift;
+
     for(int k = 0; k < shift; ++k)
     {
-        if(n >= 0)
+        int temp = arr[size - 1];
+        for(size_t i = size - 1; i > 0; --i)
         {
-            int temp = arr[size - 1];
-            for(size_t i = size - 1; i > 0; --i)
-            {
-                arr[i] = arr[i - 1];
-            }
-            arr[0] = temp;
+            arr[i] = arr[i - 1];
         }
-        else
-        {
-            int temp = arr[0];
-            for(size_t i = 0; i < size - 1; ++i)
-            {
-                arr[i] = arr[i + 1];
-            }
-            arr[size - 1] = temp;
-        }
+        arr[0] = temp;
     }
 }
 
