@@ -54,27 +54,23 @@ void create_file(const std::string& fileName)
 
 void concat_files(const std::string& fileName1, const std::string& fileName2, const std::string& fileName3)
 {
-    char* p1 = nullptr;
-    read_file(fileName1, &p1);
-
-    char* p2 = nullptr;
-    read_file(fileName2, &p2);
-
     std::ofstream out(fileName3);
-    if (out.is_open())
+    if (!out.is_open())
     {
-        out << p1 << p2;
-        delete [] p1;
-        delete [] p2;
-        out.close();
-    }
-    else
-    {
-        delete [] p1;
-        delete [] p2;
         std::cerr << "Can't open file: " << fileName3 << std::endl;
         exit(EXIT_FAILURE);
     }
+
+    char* p = nullptr;
+    read_file(fileName1, &p);
+    out << p;
+    delete [] p;
+    p = nullptr;
+
+    read_file(fileName2, &p);
+    out << p;
+    delete [] p;
+    p = nullptr;
 }
 
 void read_file(const std::string& fileName, char** p)
@@ -103,14 +99,14 @@ bool find_word(const std::string& fileName, const std::string& word)
     std::ifstream in(fileName);
     if (in.is_open())
     {
-        std::stringstream ss;
-        std::istream_iterator<std::string> start {in};
-        std::istream_iterator<std::string> end;
-        std::copy(start, end, std::ostream_iterator<std::string>(ss));
-        in.close();
-        if(ss.str().find(word) != std::string::npos)
+        std::string part;
+        while(in >> part)
         {
-            return true;
+            if (part.find(word) != std::string::npos)
+            {
+                in.close();
+                return true;
+            }
         }
     }
     else
@@ -118,5 +114,6 @@ bool find_word(const std::string& fileName, const std::string& word)
         std::cerr << "Can't open file: " << fileName << std::endl;
         exit(EXIT_FAILURE);
     }
+    in.close();
     return false;
 }
