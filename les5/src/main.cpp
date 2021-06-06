@@ -98,11 +98,9 @@ void inverse(int* arr, const size_t size)
 
 void add_three(int arr[], const size_t size)
 {
-    size_t i = 0;
-    arr[0] = 1;
-    for(i = 1; i < size; ++i)
+    for(size_t i = 0; i < size; ++i)
     {
-        arr[i] = arr[i - 1] + 3;
+        arr[i] = i * 3 + 1;
     }
 }
 
