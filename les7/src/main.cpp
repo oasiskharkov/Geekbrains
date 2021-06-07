@@ -8,8 +8,6 @@ static constexpr size_t MSIZE {3};
 #define ARR(arr, i, j) *(*((arr) + (i)) + (j))
 #define SIZEOF(ref, type_size) sizeof(ref) / sizeof(type_size)
 
-void print_matrix(int** const p, int MSIZ);
-
 int main()
 {
     // ---------#1---------
